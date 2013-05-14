@@ -1,0 +1,44 @@
+<html>
+   <head>
+      <title>"Edit File" button for Github diffs</title>
+      <script type="text/javascript">
+         window.onload=function() {
+            function el(id) {
+               return document.getElementById(id);
+            }
+            var element = el('bookmarklet');
+            var code = el('code');
+            element.setAttribute('href', "javascript:" + code.innerHTML);
+         };
+      </script>
+   </head>
+   <body>
+   <a href="https://github.com/danielbeardsley/github-diff-edit"><img style="position: absolute; top: 0;
+   right: 0; border: 0;"
+   src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
+   alt="Fork me on GitHub"></a>
+      <h2>
+         <a id="bookmarklet" href="#">Edit File bookmarklet!</a>
+      </h2>
+
+      <h2>Screenshot:</h2>
+      <img src="screenshot.png"/>
+
+      <h2>Code:</h2>
+      <pre id="code">
+/**
+ * Add this as a bookmarklet to add a "Edit File" button to each file when
+ * viewing a pull-request.
+ */
+var branch = $(".pull-description .current-branch .css-truncate-target").last().text();
+$(".file .minibutton").each(function(indx, button) {
+   button = $(button);
+   var edit = button.clone();
+   edit.text("Edit File");
+   var href = edit.attr("href");
+   edit.attr("href", href.replace(/\/blob\/[^\/]+\//,"/edit/" + branch + "/"));
+   button.before(edit);
+});
+      </pre>
+   </body>
+</html>
