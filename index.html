@@ -25,14 +25,19 @@
       <img src="screenshot.png"/>
 
       <h2>Code:</h2>
+      <pre>
+      /**
+       * Add this as a bookmarklet to add a "Edit File" button to each file when
+       * viewing a pull-request.
+       */
+      </pre>
       <pre id="code">
-/**
- * Add this as a bookmarklet to add a "Edit File" button to each file when
- * viewing a pull-request.
- */
 var branch = $(".pull-description .current-branch .css-truncate-target").last().text();
 $(".file .minibutton").each(function(indx, button) {
    button = $(button);
+   if (button.text().indexOf("View file @") === -1) {
+      return;
+   }
    var edit = button.clone();
    edit.text("Edit File");
    var href = edit.attr("href");
