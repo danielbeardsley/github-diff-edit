@@ -18,18 +18,20 @@
    src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
    alt="Fork me on GitHub"></a>
       <h2>
-         <a id="bookmarklet" href="#">Edit File bookmarklet!</a>
+         <a id="bookmarklet" href="#">Add "Edit File"</a>
+         -- drag this to your bookmarks bar visit a pull-request page and click it.
       </h2>
 
+      <p>Use it to add this "Edit File" button to github pull request diffs.</p>
       <h2>Screenshot:</h2>
       <img src="screenshot.png"/>
 
       <h2>Code:</h2>
       <pre>
-      /**
-       * Add this as a bookmarklet to add a "Edit File" button to each file when
-       * viewing a pull-request.
-       */
+/**
+ * Add this as a bookmarklet to add a "Edit File" button to each file when
+ * viewing a pull-request.
+ */
       </pre>
       <pre id="code">
 var branch = $(".pull-description .current-branch .css-truncate-target").last().text();
