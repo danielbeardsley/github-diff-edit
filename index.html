@@ -11,29 +11,74 @@
             element.setAttribute('href', "javascript:" + code.innerHTML);
          };
       </script>
+      <style type='text/css'>
+         body {
+            font-family: Helvetica, Arial, sans-serif;
+            margin:0;
+            padding:0;
+         }
+         #main {
+            max-width: 700px;
+            margin:10px auto;
+            padding:10px 30px;
+         }
+
+         h2 {
+            margin-top:2em;
+         }
+
+         header {
+            background:#447733;
+            color:white;
+         }
+
+         header h2 {
+            margin: 0 auto;
+            padding: 1em; 
+            max-width:700px;
+         }
+
+         #description {
+            margin: 1em 0 1em 0;
+         }
+
+         .screenshot {
+            border: 3px dashed #ccc;
+            border-radius: 10px;
+            margin-botomr:20px;
+         }
+      </style>
    </head>
    <body>
    <a href="https://github.com/danielbeardsley/github-diff-edit"><img style="position: absolute; top: 0;
    right: 0; border: 0;"
    src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
    alt="Fork me on GitHub"></a>
-      <h2>
-         <a id="bookmarklet" href="#">Add "Edit File"</a>
-         -- drag this to your bookmarks bar visit a pull-request page and click it.
-      </h2>
+      <header>
+         <h2>Github pull request "Edit File" button</h2>
+      </header>
+      <div id="main">
+         <p id='description'>
+            A Bookmarklet that adds this "Edit File" button
+            to github.com pull request diffs like this:
+         </p>
+         <img src="screenshot.png" class="screenshot"/>
 
-      <p>Use it to add this "Edit File" button to github pull request diffs.</p>
-      <h2>Screenshot:</h2>
-      <img src="screenshot.png"/>
+         <h2>Bookmarklet:</h2>
+         <p>
+            <a id="bookmarklet" href="#">Add "Edit File"</a>
+            -- drag this to your bookmarks bar,
+               visit a pull-request page and click it.
+         </p>
 
-      <h2>Code:</h2>
-      <pre>
+         <h2>Code:</h2>
+         <pre>
 /**
  * Add this as a bookmarklet to add a "Edit File" button to each file when
  * viewing a pull-request.
  */
-      </pre>
-      <pre id="code">
+         </pre>
+         <pre id="code">
 var branch = $(".pull-description .current-branch .css-truncate-target").last().text();
 $(".file .minibutton").each(function(indx, button) {
    button = $(button);
@@ -46,6 +91,7 @@ $(".file .minibutton").each(function(indx, button) {
    edit.attr("href", href.replace(/\/blob\/[^\/]+\//,"/edit/" + branch + "/"));
    button.before(edit);
 });
-      </pre>
+         </pre>
+      </div>
    </body>
 </html>
